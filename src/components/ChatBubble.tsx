@@ -1,7 +1,7 @@
 export default function ChatBubble ({text, role}) { // t/i here
 
-    let alignValue = '';
-    let colorValue = '';
+    let alignValue : string = '';
+    let colorValue : string = '';
     if (role === 'user') {
         alignValue = 'end';
         colorValue = 'lightblue';

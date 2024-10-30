@@ -1,4 +1,4 @@
 export interface Message {
     content: string,
-    role: 'user' | 'gpt' | 'system'
+    role: 'user' | 'gpt' | 'system',
 }

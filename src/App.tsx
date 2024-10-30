@@ -30,6 +30,7 @@ function App() {
     const queryModel = async () => {
         setQueryComplete(false);
 
+        const requestUrl : string = 'http://192.168.1.2:3000/yorkgpt';
         const queryConfig: RequestInit = {
             method: 'POST',
             headers:  {
@@ -41,7 +42,7 @@ function App() {
         }
 
         try {
-            const response = await fetch('http://192.168.1.2:3000/yorkgpt', queryConfig);
+            const response = await fetch(requestUrl, queryConfig);
             const reply = await response.json();
             setConversation(prevConversation => [...prevConversation, { content: reply.result, role: 'gpt' }]);
             setQueryComplete(true);
