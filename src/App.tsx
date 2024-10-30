@@ -7,7 +7,10 @@ import LoadingBubble from "./components/LoadingBubble.tsx";
 
 function App() {
 
-    const [conversation, setConversation] = useState<Message[]>([]);
+    const [conversation, setConversation] = useState<Message[]>([
+        {content: 'Hi', role: 'user'},
+        {content: 'hellooo', role: 'gpt'}
+    ]);
     const [query, setQuery] = useState<Message>({
         content: '',
         role: 'user'
@@ -43,6 +46,8 @@ function App() {
             setConversation(prevConversation => [...prevConversation, { content: reply.result, role: 'gpt' }]);
             setQueryComplete(true);
         } catch(error) {
+            setQueryComplete(true);
+            setConversation(prevConversation => [...prevConversation, { content: 'Server query failed. Try again when the service is available.', role: 'system' }]);
             console.error(error.message);
         }
     }

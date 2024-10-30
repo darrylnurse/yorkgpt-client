@@ -1,13 +1,29 @@
 export default function ChatBubble ({text, role}) { // t/i here
+
+    let alignValue = '';
+    let colorValue = '';
+    if (role === 'user') {
+        alignValue = 'end';
+        colorValue = 'lightblue';
+    } else if (role === 'gpt') {
+        alignValue = 'start';
+        colorValue = 'lightgreen';
+    } else {
+        alignValue = 'center';
+        colorValue = 'orange';
+    }
+
     return (
         <li className={'chat-row'}>
             <div
                 className={'bubble'}
                 style={{
-                    alignSelf: role === 'user' ? 'end' : 'start',
-                    backgroundColor: role === 'user' ? 'lightblue' : 'lightgreen',
+                    alignSelf: alignValue,
+                    backgroundColor: colorValue,
                 }}
-            >{text}</div>
+            >
+                {text}
+            </div>
         </li>
     )
 }
